@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Dimensions } from 'react-native';
 import {
   View,
   Text,
@@ -15,7 +16,7 @@ const ChatScreen = ({ route }) => {
   const fetchAnswer = async (questionText) => {
     try {
       const prompt = questionText;
-      const apikey = "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"
+      const apikey = "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"
       const url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
       const headers = {
@@ -42,7 +43,6 @@ const ChatScreen = ({ route }) => {
 
   };
 
-  //사용자가 입력한 값이랑 chatgpt api를 통해 받아온값이 다른 형식의 말풍선으로 보이게 하는 코드
   const submitQuestion = async () => {
     if (question.trim().length === 0) return;
 
@@ -50,7 +50,7 @@ const ChatScreen = ({ route }) => {
     setQuestion('');
 
     const answer = await fetchAnswer(question);
-    setConversation((prev) => [...prev, { type: 'answer', content: answer.replace(/\n/g, '') }]);
+    setConversation((prev) => [...prev, { type: 'answer', content: answer.replace(/\\n/g, '') }]);
   };
 
   return (
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    height: Dimensions.get('window').height, // 현재 장치의 높이로 설정
   },
   conversation: {
     flex: 1,

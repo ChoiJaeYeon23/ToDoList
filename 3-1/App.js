@@ -1,9 +1,10 @@
-import { View } from 'react-native';
-import TodoList from './components/TodoList'
+import { NavigationContainer } from "@react-navigation/native"
+import StackNavi from './navigator/StackNavi'
 
 export default function App() {
   return (
-      <TodoList>
-      </TodoList>
+    <NavigationContainer>
+      <StackNavi />
+    </NavigationContainer>
   );
 }

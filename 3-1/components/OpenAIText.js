@@ -16,7 +16,7 @@ const ChatScreen = ({ route }) => {
   const fetchAnswer = async (questionText) => {
     try {
       const prompt = questionText;
-      const apikey = "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"
+      const apikey = "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"
       const url = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
       const headers = {
